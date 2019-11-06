@@ -4,7 +4,7 @@ const Schemes = require('./scheme-model.js');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => { //DONE
   Schemes.find()
   .then(schemes => {
     res.json(schemes);
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => { //DONE
   const { id } = req.params;
 
   Schemes.findById(id)
@@ -58,6 +58,7 @@ router.post('/', (req, res) => {
   });
 });
 
+// STRETCH
 router.post('/:id/steps', (req, res) => {
   const stepData = req.body;
   const { id } = req.params; 
