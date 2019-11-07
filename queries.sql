@@ -18,7 +18,7 @@ WHERE [Order].OrderDate < '2012-08-09';
 -- Display the name and quantity of the products ordered in order with Id 10251. Sort by ProductName. Shows 3 records.
 
 SELECT ProductName AS 'Product Name', Quantity FROM OrderDetail
-JOIN Product On OrderDetail.ProductId = Product.Id
+JOIN Product ON OrderDetail.ProductId = Product.Id
 WHERE OrderId = 10251
 ORDER BY ProductName;
 
@@ -37,3 +37,9 @@ SELECT * FROM vEmployee;
 
 SELECT OrderId AS 'Order Id', EmployeeLastName AS 'Employee Last Name', CustomerCompanyName AS 'Customer Company Name' FROM vEmployee
 JOIN vCompany ON vEmployee.OrderId = vCompany.OrderId
+
+...OR...
+
+SELECT [Order].Id AS 'Order Id', LastName AS 'Employee Last Name', CompanyName AS 'Customer Company Name' FROM [Order]
+JOIN Customer ON [Order].CustomerId = Customer.Id
+JOIN Employee ON [Order].EmployeeId = Employee.Id;
