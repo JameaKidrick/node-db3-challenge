@@ -4,7 +4,7 @@ const Schemes = require('./scheme-model.js');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => { //DONE
   Schemes.find()
   .then(schemes => {
     res.json(schemes);
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => { //DONE
   const { id } = req.params;
 
   Schemes.findById(id)
@@ -46,11 +46,13 @@ router.get('/:id/steps', (req, res) => {
   });
 });
 
+// SCHEME NAME HAS TO BE DIFFERENT OTHERWISE, ERROR 500
 router.post('/', (req, res) => {
   const schemeData = req.body;
 
   Schemes.add(schemeData)
   .then(scheme => {
+    console.log(scheme)
     res.status(201).json(scheme);
   })
   .catch (err => {
@@ -58,6 +60,7 @@ router.post('/', (req, res) => {
   });
 });
 
+// STRETCH
 router.post('/:id/steps', (req, res) => {
   const stepData = req.body;
   const { id } = req.params; 
